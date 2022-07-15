@@ -22,7 +22,7 @@ def enviar_email():
         print("valor pra venda", i.superior)
         print("valor pra compra", i.inferior)
 
-        if(x['Close'] > i.superior).bool():
+        if(x['Close'].iloc[0] > i.superior):
             corpo_email = """
             <p>Vender %s</p>
             """%(i.ativo)
@@ -42,7 +42,7 @@ def enviar_email():
             s.sendmail(msg['From'], [msg['To']], msg.as_string().encode('utf-8'))
             print('Email enviado para venda da', i.ativo)
 
-        if(x['Close'] < i.inferior).bool():
+        if(x['Close'].iloc[0] < i.inferior):
             corpo_email = """
             <p>Comprar %s</p>
             """%(i.ativo)
