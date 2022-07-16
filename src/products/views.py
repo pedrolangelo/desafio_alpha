@@ -1,34 +1,30 @@
 from django.shortcuts import render
 from .models import Info
-import pandas as pd
-from pandas_datareader import data as web
-from datetime import datetime
-import time
+import json
+from django.utils import timezone
+from django_celery_beat.models import IntervalSchedule, PeriodicTask
+from .forms import InfoForm
 # Create your views here.
 
-def chart_select_view(request):
-    print('TESTE REQUEST')
-    print(request.POST.get('ativo'))
+def index(request):
+    form = InfoForm(request.POST or None)
+    mensagem_confirmacao=None
 
-    print('TESTE COTACAO')
-    while True:
-        x = web.DataReader('PETR4.SA', data_source='yahoo', start='07-10-2022', end=datetime.now())
-        x = pd.DataFrame(x)
-        print(x['Close'])
-        time.sleep(2)
+    if form.is_valid():
+        obj = form.save(commit=False)
+        obj.save()
 
+        form = InfoForm()
+        mensagem_confirmacao = "Ativo configurado"
+    context = {
+        'form': form,
+        'mensagem_confirmacao': mensagem_confirmacao,
+    }
+    return render(request, 'products/main.html', context)
 
-    # product_df = pd.DataFrame(Product.objects.all().values())
-    # purchase_df = pd.DataFrame(Purchase.objects.all().values())
-    # context = {
-    #     'products' : product_df.to_html(), 
-    #     'purchase' : purchase_df.to_html()
-    # }
-
-    # return render(request, 'products/main.html', context)
-
-
-# def cotacao (request):
-    # print(request.POST.get('ativo'))
-    # abev = abev.history(period="7d",  interval = "1m")
-    # print(abev)
+def ativos(request):
+    context = {
+        'form': 'form',
+        'mensagem_confirmacao': 'mensagem_confirmacao',
+    }
+    return render(request, 'products/main.html', context)

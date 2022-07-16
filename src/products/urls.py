@@ -1,10 +1,12 @@
 import py_compile
 from django.urls import path
-from .views import chart_select_view
+from .views import index, ativos
 
-app_name = 'products'
+app_name = 'home'
 
 urlpatterns = [
-    path('', chart_select_view, name='main-products-view'),
+    path('', index, name='index'),
+    path('ativos/', ativos, name='ativos'),
+
     # path('', cotacao, name='cotacao-ativo')
 ]
