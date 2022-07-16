@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Início{% endblock title %}
+
+{% block content %}
+<form action="" method="post">
+    {% csrf_token %}  
+    {{ ativo }}
+    <!-- {% for obj in objs %}
+        <li>{{ obj.id }} - {{ obj }}</li>
+    {% endfor %} -->
+    <button type="submit"> Salvar </button>
+</form>
+
+{% endblock content %}
