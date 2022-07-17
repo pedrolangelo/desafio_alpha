@@ -3,7 +3,7 @@ from .models import Info
 import json
 from django.utils import timezone
 from django_celery_beat.models import IntervalSchedule, PeriodicTask
-from .forms import InfoForm
+from .forms import InfoForm, InfoFormEditar
 from django.http import HttpResponseRedirect
 
 # Create your views here.
@@ -28,10 +28,9 @@ def index(request):
 
 def editar(request, ativo_id):
     if(request.method == 'GET'):
-        ativos = InfoForm()
+        ativos = InfoFormEditar()
         ativo = Info.objects.filter(id=ativo_id).first()
-        form = InfoForm(instance=ativo)
-        print('ativo', ativo)
+        form = InfoFormEditar(instance=ativo)
 
         context = {
             'objs': ativos,
@@ -41,13 +40,13 @@ def editar(request, ativo_id):
 
     elif (request.method == 'POST'):
         ativo = Info.objects.filter(id=ativo_id).first()
-        form = InfoForm(request.POST, instance=ativo)
+        form = InfoFormEditar(request.POST, instance=ativo)
         if form.is_valid():
             ativo = form.save(commit=False)
             ativo.save()
             return HttpResponseRedirect("/")
 
-        form = InfoForm()
+        form = InfoFormEditar()
 
     return render(request, 'products/ativos.html', context)
 

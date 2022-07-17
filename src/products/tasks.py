@@ -12,10 +12,7 @@ from django_celery_beat.models import PeriodicTask
 @shared_task(name="enviar_email")
 def enviar_email(id):
     ativo = Info.objects.get(id=id)
-
-    print("TESTANDO ", ativo.ativo)
-    print("ATIVADO? ", ativo.status)
-
+    print(ativo.date)
     x = web.DataReader(ativo.ativo, data_source='yahoo', start=datetime.date(ativo.date), end=datetime.now())
     x = pd.DataFrame(x)
 
