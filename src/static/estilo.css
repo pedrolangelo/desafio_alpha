@@ -1,0 +1,173 @@
+body
+{
+    font-family: sans-serif; font-weight: bold; color: #005984;
+    height: 600px; background-color: #005984;
+    display: flex; flex-direction: row; justify-content: center; align-items: center;
+}
+
+h1
+{
+    display: flex; flex-direction: row; justify-content: center; align-items: center;
+}
+
+.container
+{
+    width: 400px; height: 450px; padding: 20px 25px 20px 20px;
+    background: #efeeee; position: relative;
+}
+
+.Escolha
+{
+    display: grid; grid-template-columns: 1fr 1fr;
+}
+
+input, select {
+    display: block; width: 100%; margin-bottom: 20px; padding: 2px 2px 2px 2px;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    box-shadow: 1px 1px 2px #333333;
+    -moz-box-shadow: 1px 1px 2px #333333;
+    -webkit-box-shadow: 1px 1px 2px #333333;
+    background: rgb(238, 238, 238);
+    border: 1px solid #000000;
+}
+
+
+input:hover,
+select:hover {
+    background: #ffffff;
+    border: 1px solid #990000;
+}
+
+.Status
+{
+    margin-right: 20px;
+}
+
+.Intervalo
+{
+    margin-left: 15px;
+}
+
+button
+{
+    width: 95%; margin-top: 20px;
+}
+
+.Botoes
+{
+    display: grid; grid-template-columns: 1fr 1fr;
+}
+
+.myButton {
+	box-shadow:inset 0px 0px 15px 3px #16243b;
+	background:linear-gradient(to bottom, #16243b 5%, #415989 100%);
+	background-color:#16243b;
+	border-radius:17px;
+	border:1px solid #1f2f47;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	padding:10px 3px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #16243b;
+}
+
+.myButton:hover {
+	background:linear-gradient(to bottom, #415989 5%, #16243b 100%);
+	background-color:#415989;
+}
+.myButton:active {
+	position:relative;
+	background-color:#667aa1;
+}
+
+/* ---------- modal --------- */
+li
+{
+    list-style-type: none; display: block; width: 100%; padding: 10px 10px 10px 10px;
+}
+
+
+a
+{
+    text-decoration: none; color: #005984; width: 60%; margin-top: 20px;
+    font-weight: bold;
+}
+
+
+a:hover 
+{
+    margin-left: 5px;
+}
+
+.myButton2 
+{
+	box-shadow:inset 0px 0px 15px 3px #16243b;
+	background:linear-gradient(to bottom, #16243b 5%, #415989 100%);
+	background-color:#16243b;
+	border-radius:17px;
+	border:1px solid #1f2f47;
+	display:inline-block;
+	cursor:pointer;
+    font-size: 15px; font-weight: 100;font-family:Arial;
+	color:#ffffff;
+	padding:12px 23px;
+    padding-left: 50px !important;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #16243b; margin-left: 10px;
+}
+
+.myButton2:hover {
+	background:linear-gradient(to bottom, #415989 5%, #16243b 100%);
+	background-color:#415989;
+}
+
+.modal 
+{
+    position: fixed; width: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    z-index: 99999;
+    opacity:0;
+    -webkit-transition: opacity 400ms ease-in;
+    -moz-transition: opacity 400ms ease-in;
+    transition: opacity 400ms ease-in;
+    pointer-events: none;
+    background: rgba(0,0,0,0.8);
+}
+
+.modal:target {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal > div 
+{
+    width: 400px;
+    position: relative;
+    margin: 10% auto;
+    padding: 15px 20px;
+    background: #fff;
+}
+
+.fechar 
+{
+    position: absolute;
+    width: 30px;
+    right: -15px;
+    top: -20px;
+    text-align: center;
+    line-height: 30px;
+    margin-top: 5px;
+    background: #ff4545;
+    border-radius: 50%;
+    font-size: 16px;
+    color: #8d0000;
+}

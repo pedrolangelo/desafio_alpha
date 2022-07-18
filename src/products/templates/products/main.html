@@ -6,29 +6,48 @@
 
 {% block content %}
 
-<div class="principal">
-    <div class="formulario">
-        <h1>Adicionar Ativo</h1>
-        <form action="" method="post">
-            {% csrf_token %}  
-            {{ form }}
+<div class="container">
+    <h1>Adicionar Ativo</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        <span>Ativo</span>  
+        {{ form.ativo }}
+        <span>Email</span>  
+        {{ form.email }}
+        <span>Vender</span>  
+        {{ form.superior }}
+        <span>Comprar</span>  
+        {{ form.inferior }}
+        <div class="Escolha">
+            <div class="Status">
+                <span>Status</span>  
+                {{ form.status }}
+            </div>
+            <div class="Intervalo">
+                <span>Intervalo</span>  
+                {{ form.time_interval }}
+            </div>
+        </div>
+        <div class="Botoes">
             <button class="myButton" type="submit"> Salvar </button>
-        </form>
-            {% if mensagem_confirmacao %}
-                <div>
-                    <p>{{ mensagem_confirmacao }}</p>
+
+            <a href="#abrirModal" class="myButton2"> Ativos Salvos </a>
+            <div id="abrirModal" class="modal">
+                <div class="Box">
+                    <a href="#fechar" title="Fechar" class="fechar">x</a>
+                    {% for obj in objs %}
+                        <li>
+                            <a href='editar/{{obj.id}}'>{{ obj }}</a>
+                        </li>
+                    {% endfor %}
                 </div>
-            {% endif %}
-    </div>
-
-    <div class="Ativos">
-        <h2>Ativos</h2>
-
-        {% for obj in objs %}
-            <li>
-                <a href='editar/{{obj.id}}'>{{ obj }}</a>
-            </li>
-        {% endfor %}
-    </div>
+            </div>
+        </div>
+    </form>
+        {% if mensagem_confirmacao %}
+            <div>
+                <p>{{ mensagem_confirmacao }}</p>
+            </div>
+        {% endif %}
 </div>
 {% endblock content %}

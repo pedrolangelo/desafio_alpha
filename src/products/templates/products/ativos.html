@@ -3,13 +3,36 @@
 {% block title %}Início{% endblock title %}
 
 {% block content %}
-<form action="" method="post">
-    {% csrf_token %}  
-    {{ ativo }}
-    <!-- {% for obj in objs %}
-        <li>{{ obj.id }} - {{ obj }}</li>
-    {% endfor %} -->
-    <button type="submit"> Salvar </button>
-</form>
-
+<div class="container">
+    <div class="box">
+        <h1>Editar Ativo</h1>
+        <form action="" method="post">
+            {% csrf_token %}
+            <span>Ativo</span>  
+            {{ ativo.ativo }}
+            <span>Email</span>  
+            {{ ativo.email }}
+            <span>Superior</span>  
+            {{ ativo.superior }}
+            <span>Inferior</span>  
+            {{ ativo.inferior }}
+            <div class="Escolha">
+                <div class="Status">
+                    <span>Status</span>  
+                    {{ ativo.status }}
+                </div>
+                <div class="Intervalo">
+                    <span>Intervalo</span>  
+                    {{ ativo.editar_time_interval }}
+                </div>
+            </div>
+            <button class="myButton2" type="submit"> Salvar </button>
+        </form>
+            {% if mensagem_confirmacao %}
+                <div>
+                    <p>{{ mensagem_confirmacao }}</p>
+                </div>
+            {% endif %}
+    </div>
+</div>
 {% endblock content %}
