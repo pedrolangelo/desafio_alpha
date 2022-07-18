@@ -5,7 +5,7 @@ python manage.py runserver
 
 celery -A desafio_alpha beat -l info
 
-celery -A desafio_alpha worker -l INFO
+celery -A desafio_alpha worker -l INFO --without-gossip --without-mingle --without-heartbeat -Ofair --pool=solo
 
 (Também é necessario ter o Redis rodando)
 
